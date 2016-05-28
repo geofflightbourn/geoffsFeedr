@@ -19,7 +19,9 @@ $.ajax({
     }
 })
 
-$( "h3" ).click(function() {
-  console.log('clicked');
-  $('[href]:first-of-type').removeClass('.hidden')
-})
+$(document).ready(function() {
+	$( ".contentHeader" ).click(function() {
+	  console.log('clicked');
+	  $('#popUp').removeClass('hidden')
+		})
+  })
