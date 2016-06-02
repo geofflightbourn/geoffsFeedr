@@ -25,9 +25,8 @@
               <ul>
                 <li><a href="#">News Source: <span>Source Name</span></a>
                   <ul>
-                      <li><a href="#">Source 1</a></li>
-                      <li><a href="#">Source 2</a></li>
-                      <li><a href="#">Source 3</a></li>
+                      <li><a href="#">Digg</a></li>
+                      <li><a href="#">Reddit</a></li>
                   </ul>
                 </li>
               </ul>
@@ -40,7 +39,7 @@
           </section>
         </header>
 
-        <div id="popUp" class="hidden"></div>
+        <div id="popUp" class="popUp loader"></div>
 
         <section id="main" class="container"></section>
 
@@ -51,7 +50,7 @@
 
         <script id="popUpTemp" type="text/x-handlebars-template">
           <a href="#" class="closePopUp">X</a>
-          <div class="container">
+          <div class="container" data-article-index="{{index}}">
             <h1>{{content.title}}</h1>
             <p>
               {{content.description}}
@@ -67,10 +66,12 @@
           <img src={{content.media.images.0.url}} alt="" />
         </section>
         <section class="articleContent">
-            <a href="#" class="contentHeader"><h3>{{content.title}}</h3></a>
+            <a href="#" class="contentHeader" data-article-index="{{index}}">
+              <h3>{{content.title}}</h3>
+            </a>
             <h6>{{#each content.tags}}
-            {{this.display}}
-          {{/each}}</h6>
+                {{this.display}}
+                {{/each}}</h6>
         </section>
         <section class="impressions">
           {{digg_score}}

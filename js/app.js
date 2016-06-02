@@ -5,39 +5,60 @@ function processHandlebarsTemplate(templateId, data) {
 	return compiledTemplate(data);
 }
 
-$.ajax({
+$.ajax({ //Gets 10 digg articles
 	type: 'GET',
 	url: 'https://accesscontrolalloworiginall.herokuapp.com/http://digg.com/api/news/popular.json',
 	success: function(response) {
     var templateSource = $('#newsTemp').html()
     			var compiledTemplate = Handlebars.compile(templateSource)
-        response.data.feed.forEach(function (article) {
+
+					window.data = response.data.feed
+
+        response.data.feed.forEach(function (article, index) {
           var data = article
+					data.index = index
+
     			var generatedHtml = compiledTemplate(data)
     			$('#main').append(generatedHtml)
         })
     }
 })
 
-$.ajax({
+$.ajax({ // #popUp Content
 	type: 'GET',
 	url: 'https://accesscontrolalloworiginall.herokuapp.com/http://digg.com/api/news/popular.json',
 	success: function(response) {
     var templateSource = $('#popUpTemp').html()
     			var compiledTemplate = Handlebars.compile(templateSource)
+
         response.data.feed.forEach(function (article) {
           var data = article
     			var generatedHtml = compiledTemplate(data)
     			$('#popUp').append(generatedHtml)
         })
+
+				var $loading = $('.loader').hide(); //loader circle
+			$(document)
+				.ajaxStart(function () {
+					$loading.show();
+				})
+				.ajaxStop(function () {
+					$loading.hide();
+				});
     }
 })
 
 $(document).ready(function() {
 
-	$( "#main" ).on( "click", "a", function( event ) {
-		console.log('clicked');
-	$( this ).removeClass('hidden, loader')
-	});
+	$( "#main" ).on( "click", "a", function( event ) { //Load Popup
+		var index = $(this).data('article-index')
+		var article = window.data[index]
+		console.log(article);
+	$('#popUp').show()
+	})
 
-  })
+	$("#popUp").on("click", ".closePopUp", function(event) { //close popUp
+	$("#popUp").hide()
+	})
+
+}) // end ready
