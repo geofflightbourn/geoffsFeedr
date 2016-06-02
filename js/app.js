@@ -31,8 +31,11 @@ $.ajax({ // #popUp Content
     var templateSource = $('#popUpTemp').html()
     			var compiledTemplate = Handlebars.compile(templateSource)
 
-        response.data.feed.forEach(function (article) {
+					window.data = response.data.feed
+
+        response.data.feed.forEach(function (article, index) {
           var data = article
+						data.index = index
     			var generatedHtml = compiledTemplate(data)
     			$('#popUp').append(generatedHtml)
         })
