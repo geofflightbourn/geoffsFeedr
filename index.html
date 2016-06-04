@@ -51,12 +51,14 @@
         <script id="popUpTemp" type="text/x-handlebars-template">
           <a href="#" class="closePopUp">X</a>
           <div class="container" data-article-index="{{index}}">
-            <h1>{{#each article}}
-              {{@index}}: {{object.content.title}}
+            <h1>{{#each content}}
+              {{@index}}: {{this.title}}
               {{/each}}
             </h1>
             <p>
-              {{content.description}}
+              {{#each content}}
+                {{@index}}: {{this.description}}
+                {{/each}}
             </p>
             <a href="#" class="popUpAction" target="_blank">Read more from source</a>
           </div>
