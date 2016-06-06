@@ -39,7 +39,7 @@
           </section>
         </header>
 
-        <div id="popUp" class="popUp"></div>
+        <div id="popUp" class="popUp hidden"></div>
 
         <section id="main" class="container"></section>
 
@@ -51,14 +51,10 @@
         <script id="popUpTemp" type="text/x-handlebars-template">
           <a href="#" class="closePopUp">X</a>
           <div class="container" data-article-index="{{index}}">
-            <h1>{{#each content}}
-              {{@index}}: {{this.title}}
-              {{/each}}
+            <h1>{{title}}
             </h1>
             <p>
-              {{#each content}}
-                {{@index}}: {{this.description}}
-                {{/each}}
+              {{description}}
             </p>
             <a href="#" class="popUpAction" target="_blank">Read more from source</a>
           </div>
