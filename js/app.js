@@ -22,9 +22,9 @@ $.ajax({ //Gets 10 digg articles
 				$('#popUp').removeClass('hidden')
 				$('#popUp').removeClass('loader')
 
-				$('#popUp').append('<h1>"'+ article.content.title +'"</h1>')
-				$('#popUp').append('<p>"'+ article.content.description +'"<p>')
-				$('#popUp').append()
+				$('#popUp').append('<h1>'+ article.content.title +'</h1>')
+				$('#popUp').append('<p>'+ article.content.description +'<p>')
+				$('#popUp').append('<a href='+ article.content.original_url +' class="popUpAction" target="_blank">Read more from source</a>')
 			})
 		})
 	}
@@ -49,9 +49,9 @@ $.ajax({ //Gets 10 Reddit articles
 				$('#popUp').removeClass('hidden')
 				$('#popUp').removeClass('loader')
 
-				$('#popUp').append('<h1>"'+ article.data.title +'"</h1>')
-				$('#popUp').append('<p>"'+ article.content.domain +'"<p>')
-				$('#popUp').append()
+				$('#popUp').append('<h1>'+ article.data.title +'</h1>')
+				$('#popUp').append('<p>'+ article.data.domain +'<p>')
+				$('#popUp').append('<a href='+ article.data.url +' class="popUpAction" target="_blank">Read more from source</a>')
 			})
 		})
 	}
@@ -78,5 +78,6 @@ $(document).ready(function() {
 
 	$("#popUp").on("click", ".closePopUp", function(event) { //close popUp
 		$("#popUp").hide()
+		$('h1, p, .popUpAction').empty()
 	})
 }) // end ready
