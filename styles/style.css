@@ -4,6 +4,7 @@
   margin: 0 auto;
 }
 
+
 #popUp {
   opacity: 0.95;
   position: absolute;
@@ -235,3 +236,6 @@ nav ul ul li {
   text-align: right;
   color: #097FB2;
 }
+
+/*table {height:75%;width:75%;table-layout:static;border-collapse:collapse}
+iframe {height:75%;width:75%}*/
