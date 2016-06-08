@@ -33,7 +33,7 @@ $.ajax({ //Gets 10 digg articles
 
 $.ajax({ //Gets 10 Reddit articles
 	type: 'GET',
-	url: 'https://accesscontrolalloworiginall.herokuapp.com/https://www.reddit.com/r/news.json',
+	url: 'https://accesscontrolalloworiginall.herokuapp.com/https://www.reddit.com/r/gaming.json',
 	success: function(response) {
 		var templateSource = $('#redditTemp').html()
 		var compiledTemplate = Handlebars.compile(templateSource)

@@ -56,13 +56,13 @@
     <script id="redditTemp" type="text/x-handlebars-template">
   <article class="article">
     <section class="featuredImage">
-      <img src={{content.media.images.0.url}} alt="" />
+      <img src={{data.thumbnail}} alt="" />
     </section>
     <section class="articleContent">
         <a href="#" class="contentHeader">
           <h3 class="title">{{data.title}}</h3>
         </a>
-        <h6>{{data.domain}}</h6>
+        <h6>{{data.author}}</h6>
     </section>
     <section class="impressions">
       {{data.ups}}
